@@ -12,6 +12,7 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'logger'
+  gem  'mutex_m'
 
   if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new("3.0")
     gem 'webrick'
