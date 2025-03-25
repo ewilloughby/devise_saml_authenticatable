@@ -6,11 +6,12 @@ gemspec
 group :test do
   gem 'rake'
   gem 'rspec', '~> 3.0'
-  gem 'rails', '~> 7.2.0'
+  gem 'rails', '~> 6.1.0'
   gem 'rspec-rails'
   gem 'sqlite3', '~> 2.6'
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'logger'
 
   if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new("3.0")
     gem 'webrick'
