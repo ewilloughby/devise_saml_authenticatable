@@ -15,10 +15,10 @@ jobs:
       fail-fast: false
       matrix:
         ruby: ['3.2', '3.3', '3.4']
-        rails: ['7.2']
+        rails: ['7.1']
         gemfile:
           - Gemfile
-          - Gemfile.rails7.2
+          - spec/support/Gemfile.rails7.1
         bundler:
           - "2"
     name: Ruby ${{ matrix.ruby }} / Rails ${{ matrix.rails }}
