@@ -10,6 +10,14 @@ idp_entity_id_reader = ENV.fetch('IDP_ENTITY_ID_READER', '"DeviseSamlAuthenticat
 saml_failed_callback = ENV.fetch('SAML_FAILED_CALLBACK', "nil")
 ruby_saml_version = ENV.fetch("RUBY_SAML_VERSION")
 
+# Rails 6.1 and 7.0 bug where ActiveSupport
+# uses logger but does not include it. Concurrent ruby - whose version 
+# is not pinned in rails - used to include logger which masked the bug,
+#  but stopped including it in 1.3.5. Fixed in rails >=7.1.
+if defined?(Rails) && Rails.version < '7.1'
+  gem 'concurrent-ruby', '1.3.4'
+end
+
 gem 'devise_saml_authenticatable', path: File.expand_path("../../..", __FILE__)
 gem 'ruby-saml', ruby_saml_version
 
