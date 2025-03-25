@@ -14,14 +14,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ['3.2', '3.3', '3.4']
-        rails: ['7.1']
+        ruby:
+          - "3.4"
+          - "3.3"
+          - "3.2"
         gemfile:
           - Gemfile
           - spec/support/Gemfile.rails7.1
         bundler:
           - "2"
-    name: Ruby ${{ matrix.ruby }} / Rails ${{ matrix.rails }}
+    env:
+      BUNDLE_GEMFILE: ${{ github.workspace }}/${{ matrix.gemfile }}
     steps:
       - uses: actions/checkout@v4
       - name: Set up Ruby
@@ -30,7 +33,4 @@ jobs:
           bundler: ${{ matrix.bundler }}
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - name: Install dependencies
-        run: bundle install --gemfile=${{ matrix.gemfile }}
-      - name: Run tests
-        run: bundle exec rspec
+      - run: bundle exec rake
