@@ -12,10 +12,13 @@ Capybara.register_driver :chrome do |app|
   options.add_argument('--ignore-certificate-errors')
   options.add_argument('--ignore-certificate-errors')
   options.add_argument('--ignore-certificate-errors')
-  # Headless Chrome is failing randomly - optimizing here to try and avoid it
+  # Headless Chrome 134 is failing randomly - optimizing here to try and avoid it
   options.add_argument('--disable-background-timer-throttling')
   options.add_argument('--disable-backgrounding-occluded-windows')
   options.add_argument('--disable-renderer-backgrounding')
+  options.add_argument('--no-sandbox')
+  options.add_argument('--password-store=basic');
+  options.add_argument('--suppress-message-center-popups');
 
   Capybara::Selenium::Driver.new(
     app,
