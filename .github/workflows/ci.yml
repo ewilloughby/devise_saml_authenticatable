@@ -21,6 +21,7 @@ jobs:
         gemfile:
           - Gemfile
           - spec/support/Gemfile.rails7.1
+          - spec/support/Gemfile.rails7.2
         bundler:
           - "2"
     env:

@@ -12,12 +12,9 @@ if defined?(Rails) && Rails.version < '7.1'
 end
 
 gem 'stub_saml_idp'
-
-if Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new("3.1")
-  gem 'net-smtp', require: false
-  gem 'net-imap', require: false
-  gem 'net-pop', require: false
-end
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
 
 route "get '/saml/auth' => 'saml_idp#new'"
 route "post '/saml/auth' => 'saml_idp#create'"
