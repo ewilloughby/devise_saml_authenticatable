@@ -10,6 +10,7 @@ on:
       - master
 jobs:
   test:
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -23,7 +24,6 @@ jobs:
           - spec/support/Gemfile.rails7.2
         bundler:
           - "2"
-    runs-on: ubuntu-latest
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/${{ matrix.gemfile }}
     steps:
